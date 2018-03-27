@@ -1,51 +1,27 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, Text, TextInput, View } from 'react-native';
 
-class Blink extends Component{
-  constructor(props){
+export default class PizzaTranslator extends Component {
+  constructor(props) {
     super(props);
-    this.state = {isShowingText: true};
-
-    setInterval(() => {
-      this.setState(previousState => {
-        return { isShowingText: !previousState.isShowingText};
-      });
-    },1000);
+    this.state = {textt: ''};
   }
-  render(){
-    let display = this.state.isShowingText ? this.props.text: ' ';
-    return (
-      <Text>{display}</Text>
-    );
-  }
-}
 
-export default class BlinkApp extends Component{
-  render(){
+  render() {
     return (
-      <View>
-        <Blink text='I love to blink' />
-        <Blink text='Yes bkining is so great' />
-        <Text style={styles.red}>COLOR</Text>
-        <Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
-        <Text style={[styles.red, styles.bigblue]}>red, then bigblue</Text>
+      <View style={{padding: 10}}>
+        <TextInput
+          style={{height: 40}}
+          placeholder="Type here to translate!"
+          onChangeText={(textt) => this.setState({textt})}
+        />
+        <Text style={{padding: 10, fontSize: 42}}>
+          {this.state.textt.split(' ').map((word) => word && '🍕').join('')}
+        </Text>
       </View>
     );
   }
 }
 
-//style
-const styles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  red: {
-    color: 'red',
-  },
-});
-
-
 // skip this line if using Create React Native App
-AppRegistry.registerComponent('AwesomeProject', () => BlinkApp);
+AppRegistry.registerComponent('AwesomeProject', () => PizzaTranslator);
