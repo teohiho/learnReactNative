@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 class Blink extends Component{
   constructor(props){
@@ -26,9 +26,26 @@ export default class BlinkApp extends Component{
       <View>
         <Blink text='I love to blink' />
         <Blink text='Yes bkining is so great' />
+        <Text style={styles.red}>COLOR</Text>
+        <Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
+        <Text style={[styles.red, styles.bigblue]}>red, then bigblue</Text>
       </View>
     );
   }
 }
 
+//style
+const styles = StyleSheet.create({
+  bigblue: {
+    color: 'blue',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  red: {
+    color: 'red',
+  },
+});
+
+
+// skip this line if using Create React Native App
 AppRegistry.registerComponent('AwesomeProject', () => BlinkApp);
