@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View } from 'react-native';
 
-class Greeting extends Component {
-  render() {
+class Blink extends Component{
+  constructor(props){
+    super(props);
+    this.state = {isShowingText: true};
+
+    setInterval(() => {
+      this.setState(previousState => {
+        return { isShowingText: !previousState.isShowingText};
+      });
+    },1000);
+  }
+  render(){
+    let display = this.state.isShowingText ? this.props.text: ' ';
     return (
-      <Text>Hello {this.props.name} ! </Text>
+      <Text>{display}</Text>
     );
   }
 }
-export default class LotOfGreetings extends Component{
+
+export default class BlinkApp extends Component{
   render(){
-    return(
-      <View style={{alignItems: 'center'}}>
-        <Greeting name='Teohiho' />
-        <Greeting name='Thu Hien' />
+    return (
+      <View>
+        <Blink text='I love to blink' />
+        <Blink text='Yes bkining is so great' />
       </View>
     );
   }
 }
 
-// skip this line if using Create React Native App
-AppRegistry.registerComponent('AwesomeProject', () => LotOfGreetings);
+AppRegistry.registerComponent('AwesomeProject', () => BlinkApp);
