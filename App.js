@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, TextInput, View } from 'react-native';
-
-export default class PizzaTranslator extends Component {
-  constructor(props) {
+import { View, TextInput, AppRegistry, Image } from 'react-native';
+ 
+export default class Background extends Component{
+  constructor(props){
     super(props);
-    this.state = {textt: ''};
+    this.state = {text: ''};
   }
 
-  render() {
-    return (
-      <View style={{padding: 10}}>
-        <TextInput
-          style={{height: 40}}
-          placeholder="Type here to translate!"
-          onChangeText={(textt) => this.setState({textt})}
-        />
-        <Text style={{padding: 10, fontSize: 42}}>
-          {this.state.textt.split(' ').map((word) => word && '🍕').join('')}
-        </Text>
+  render(){
+    let pic = {
+      uri: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Image_Background.png'
+    };
+    return(
+
+      <View style={{flex:1}}>
+        <Image style={{flex:1}} source={pic}  />
+        <View>
+          <TextInput style={{height: 40}} placeholder="User"/>
+        </View>
       </View>
+
     );
   }
 }
 
-// skip this line if using Create React Native App
-AppRegistry.registerComponent('AwesomeProject', () => PizzaTranslator);
+
+
+AppRegistry.registerComponent('AwesomeProject', () => Background );
