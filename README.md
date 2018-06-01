@@ -1,5 +1,6 @@
 Hi, cái này mình học cho vui, cũng chưa tới đâu cả, chỉ mới bắt đầu thôi ^^
-Th
+Tháng 3, năm 3 đại học
+
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
